@@ -1,11 +1,7 @@
 import DataTable from "react-data-table-component";
 import ReactTooltip from "react-tooltip";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLocationArrow,
-  faFileExcel,
-  faClone,
-} from "@fortawesome/free-solid-svg-icons";
+import { faLocationArrow, faClone } from "@fortawesome/free-solid-svg-icons";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default function BookTable({ datas, clickTitleHandler }) {

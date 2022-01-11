@@ -91,7 +91,11 @@ function BookStat({ dates }) {
   return (
     <>
       <BookList dates={dates} dateChangeHandler={dateChangeHandler} />
-      <Search searchKeyword={searchKeyword} searchHandler={searchHandler} />
+      <Search
+        searchKeyword={searchKeyword}
+        searchHandler={searchHandler}
+        datas={renderingDatas}
+      />
       {datas.length > 0 ? (
         <BookTable
           datas={renderingDatas}
