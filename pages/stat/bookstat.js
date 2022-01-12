@@ -6,6 +6,7 @@ import Loading from "../../components/loading";
 import Search from "../../components/search";
 import BookGraph from "../../components/BookGraph";
 import BookInfo from "../../components/bookinfo";
+import DownloadToolBar from "../../components/downloadtoolbar";
 
 function BookStat({ dates }) {
   const [date, setDate] = useState([]);
@@ -97,10 +98,13 @@ function BookStat({ dates }) {
         datas={renderingDatas}
       />
       {datas.length > 0 ? (
-        <BookTable
-          datas={renderingDatas}
-          clickTitleHandler={clickTitleHandler}
-        />
+        <>
+          <DownloadToolBar datas={renderingDatas} searchKeyword={searchKeyword} />
+          <BookTable
+            datas={renderingDatas}
+            clickTitleHandler={clickTitleHandler}
+          />
+        </>
       ) : (
         <Loading msgs="날짜를 선택하세요" />
       )}
