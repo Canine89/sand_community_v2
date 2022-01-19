@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
+  const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
+
   return (
     <div className="flex flex-row items-center py-4 gap-4 pl-4 bg-amber-300	">
       <Link href="/">
@@ -23,6 +26,15 @@ export default function Navbar() {
           📈 출판사
         </button>
       </Link>
+      {isLoggedIn ? (
+        <></>
+      ) : (
+        <Link href="/join">
+          <button className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow">
+            😀 회원가입
+          </button>
+        </Link>
+      )}
     </div>
   );
 }

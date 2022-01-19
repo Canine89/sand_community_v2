@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { setLoggedInAction } from "../reducers/auth";
+import Layout from "../../components/layout";
 
-export default function Auth() {
+const Join = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
-  const authDispatch = useDispatch();
 
   function inputHandler(e) {
     if (e.target.id === "id") {
@@ -22,11 +20,10 @@ export default function Auth() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: id, password: password }),
     };
-    fetch("http://localhost:8000/api/token/obtain/", reqOptions)
+    fetch("http://localhost:8000/user/join/", reqOptions)
       .then((res) => res.json())
       .then((data) => {
-        localStorage.setItem("refresh", data.refresh);
-        authDispatch(setLoggedInAction());
+        console.log(data);
       });
   }
 
@@ -48,9 +45,15 @@ export default function Auth() {
       />
       <input
         type="submit"
-        value="로그인"
+        value="회원가입"
         className="rounded-lg bg-amber-300 w-80 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
       />
     </form>
   );
-}
+};
+
+Join.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};
+
+export default Join;
