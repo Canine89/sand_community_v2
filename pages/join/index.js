@@ -1,9 +1,15 @@
 import { useState } from "react";
 import Layout from "../../components/layout";
+import Router from "next/router";
 
 const Join = () => {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [signUpMsg, setSignUpMsg] = useState("환영합니다!");
+
+  const HTTP_406_NOT_ACCEPTABLE = 406;
+  const HTTP_201_CREATED = 201;
 
   function inputHandler(e) {
     if (e.target.id === "id") {
@@ -23,32 +29,42 @@ const Join = () => {
     fetch("http://localhost:8000/user/join/", reqOptions)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.status === HTTP_201_CREATED) {
+          setIsSignUp(true);
+          setSignUpMsg(data.msg);
+          Router.push("/");
+        } else if (data.status === HTTP_406_NOT_ACCEPTABLE) {
+          setIsSignUp(true);
+          setSignUpMsg(data.msg);
+        }
       });
   }
 
   return (
-    <form className="grid gap-2 my-2 justify-center" onSubmit={submitHandler}>
-      <input
-        type="text"
-        id="id"
-        value={id}
-        onChange={inputHandler}
-        className="rounded-lg w-80 py-1"
-      />
-      <input
-        type="password"
-        id="password"
-        value={password}
-        onChange={inputHandler}
-        className="rounded-lg w-80 py-1"
-      />
-      <input
-        type="submit"
-        value="회원가입"
-        className="rounded-lg bg-amber-300 w-80 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
-      />
-    </form>
+    <>
+      <div>{signUpMsg}</div>
+      <form className="grid gap-2 my-2 justify-center" onSubmit={submitHandler}>
+        <input
+          type="text"
+          id="id"
+          value={id}
+          onChange={inputHandler}
+          className="rounded-lg w-80 py-1"
+        />
+        <input
+          type="password"
+          id="password"
+          value={password}
+          onChange={inputHandler}
+          className="rounded-lg w-80 py-1"
+        />
+        <input
+          type="submit"
+          value="회원가입"
+          className="rounded-lg bg-amber-300 w-80 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
+        />
+      </form>
+    </>
   );
 };
 

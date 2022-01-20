@@ -25,6 +25,7 @@ export default function Auth() {
     fetch("http://localhost:8000/api/token/obtain/", reqOptions)
       .then((res) => res.json())
       .then((data) => {
+        localStorage.setItem("access", data.access);
         localStorage.setItem("refresh", data.refresh);
         authDispatch(setLoggedInAction());
       });

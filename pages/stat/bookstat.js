@@ -7,14 +7,31 @@ import Search from "../../components/search";
 import BookGraph from "../../components/BookGraph";
 import BookInfo from "../../components/bookinfo";
 import DownloadToolBar from "../../components/downloadtoolbar";
+import { useSelector } from "react-redux";
+import Router from "next/router";
 
-function BookStat({ dates }) {
+function BookStat() {
   const [date, setDate] = useState([]);
   const [datas, setDatas] = useState([]);
   const [renderingDatas, setRenderingDatas] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
   const [isbnData, setIsbnData] = useState([]);
+  const [dateList, setDateList] = useState([]);
+  const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
+
   const _apiurlbase = "http://175.211.105.9:8000";
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      Router.push("/");
+    }
+    fetch("http://localhost:8000" + "/book/datelist/", {
+      method: "GET",
+      headers: { Authorization: "Bearer " + localStorage.getItem("access") },
+    })
+      .then((res) => res.json())
+      .then((json) => setDateList(json));
+  }, []);
 
   useEffect(() => {
     if (date.length > 0) {
@@ -91,7 +108,12 @@ function BookStat({ dates }) {
 
   return (
     <>
-      <BookList dates={dates} dateChangeHandler={dateChangeHandler} />
+      {dateList.length > 0 ? (
+        <BookList dates={dateList} dateChangeHandler={dateChangeHandler} />
+      ) : (
+        <></>
+      )}
+
       <Search
         searchKeyword={searchKeyword}
         searchHandler={searchHandler}
@@ -99,7 +121,10 @@ function BookStat({ dates }) {
       />
       {datas.length > 0 ? (
         <>
-          <DownloadToolBar datas={renderingDatas} searchKeyword={searchKeyword} />
+          <DownloadToolBar
+            datas={renderingDatas}
+            searchKeyword={searchKeyword}
+          />
           <BookTable
             datas={renderingDatas}
             clickTitleHandler={clickTitleHandler}
@@ -122,19 +147,6 @@ function BookStat({ dates }) {
       )}
     </>
   );
-}
-
-export async function getStaticProps() {
-  const _apiurlbase = "http://175.211.105.9:8000";
-  const resdate = await fetch(_apiurlbase + "/book/datelist");
-
-  let dates = await resdate.json();
-
-  return {
-    props: {
-      dates,
-    },
-  };
 }
 
 BookStat.getLayout = function getLayout(page) {
