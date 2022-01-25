@@ -25,7 +25,7 @@ function BookStat() {
     if (!isLoggedIn) {
       Router.push("/");
     }
-    fetch("http://localhost:8000" + "/book/datelist/", {
+    fetch(_apiurlbase + "/book/datelist/", {
       method: "GET",
       headers: { Authorization: "Bearer " + localStorage.getItem("access") },
     })
