@@ -12,8 +12,11 @@ export default function Login() {
 
     // member 관리
     const easyspub_member = /\w+@easyspub.co.kr/gi;
+    const out_member = "xcode.ko@gmail.com";
 
     if (data.user.accessToken && data.user.email.match(easyspub_member)) {
+      loginDispatch(setLoginAction());
+    } else if (data.user.accessToken && data.user.email === out_member) {
       loginDispatch(setLoginAction());
     }
   };
