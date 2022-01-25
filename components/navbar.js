@@ -37,6 +37,11 @@ export default function Navbar() {
           📈 출판사
         </button>
       </Link>
+      <Link href="/stat/easysstat">
+        <button className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow">
+          👩‍🔬 이지스퍼블리싱 DB
+        </button>
+      </Link>
       <button
         className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
         onClick={logoutHandler}

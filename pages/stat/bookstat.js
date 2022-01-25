@@ -25,12 +25,11 @@ function BookStat() {
     if (!isLoggedIn) {
       Router.push("/");
     }
-    fetch(_apiurlbase + "/book/datelist/", {
-      method: "GET",
-      headers: { Authorization: "Bearer " + localStorage.getItem("access") },
-    })
+    fetch(_apiurlbase + "/book/datelist/")
       .then((res) => res.json())
-      .then((json) => setDateList(json));
+      .then((json) => {
+        setDateList(json);
+      });
   }, []);
 
   useEffect(() => {
