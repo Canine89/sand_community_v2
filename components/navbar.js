@@ -1,13 +1,15 @@
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-import { setLogoutAction } from "../reducers/auth";
 import { signOut } from "firebase/auth";
 import { authService } from "../pages/auth/fbase";
+import { setLogoutAction } from "../reducers/auth.js";
 import Router from "next/router";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Navbar() {
-  const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
   const logoutDispatch = useDispatch();
+  const displayName = useSelector(
+    (state) => state.authReducer.payload.displayName
+  );
 
   const logoutHandler = (e) => {
     logoutDispatch(setLogoutAction());
@@ -51,7 +53,7 @@ export default function Navbar() {
         className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
         onClick={logoutHandler}
       >
-        🏃‍♀️ 로그아웃
+        🏃‍♀️ ({displayName})로그아웃
       </button>
     </div>
   );

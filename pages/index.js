@@ -1,6 +1,6 @@
 import Layout from "../components/layout";
 import Image from "next/image";
-import yeahBaby from "../public/yes-baby.gif";
+import rabbit from "../public/rabbit.png";
 import Auth from "./auth/login";
 
 // with dispatch
@@ -14,11 +14,7 @@ export default function Page() {
       {isLoggedIn ? (
         <>
           <div className="text-center pt-20 bg-amber-100">
-            <Image
-              className="grayscale rounded-md"
-              src={yeahBaby}
-              height={200}
-            />
+            <Image className=" rounded-md" src={rabbit} />
           </div>
           <div className="w-full text-center pt-4 pb-20 bg-amber-100">
             <div className="text-5xl font-extrabold text-amber-600">

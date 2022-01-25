@@ -29,8 +29,9 @@ const FreeBoardMenu = () => {
         type="text"
         placeholder="한두마디 적어보세요!"
         maxLength={200}
+        className="text-sm p-1 w-1/2"
       />
-      <button className="text-sm bg-gray-300 h-fit py-1 px-4 hover:bg-gray-200 hover:shadow">
+      <button className="text-sm bg-yellow-300 h-fit py-1 px-4 hover:bg-yellow-200 hover:shadow">
         한두마디 등록
       </button>
     </form>

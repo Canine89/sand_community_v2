@@ -21,9 +21,14 @@ const FreeBoard = () => {
     <>
       <FreeBoardMenu />
       {msgs ? (
-        <div>
+        <div className="grid grid-cols-2 gap-2 py-2">
           {msgs.map((msg) => (
-            <li key={msg.id}>{msg.msg}</li>
+            <div
+              key={msg.id}
+              className="rounded-lg bg-amber-100 py-2 h-24 text-center drop-shadow-lg"
+            >
+              {msg.msg}
+            </div>
           ))}
         </div>
       ) : (
