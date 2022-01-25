@@ -1,7 +1,11 @@
 // set action
-export const SETLOGGEDIN = "SETLOGGEDIN";
-export function setLoggedInAction() {
-  return { type: SETLOGGEDIN };
+export const SETLOGIN = "SETLOGIN";
+export const SETLOGOUT = "SETLOGOUT";
+export function setLoginAction() {
+  return { type: SETLOGIN };
+}
+export function setLogoutAction() {
+  return { type: SETLOGOUT };
 }
 
 // set init state
@@ -9,8 +13,10 @@ const initState = { isLoggedIn: false };
 
 // set reducer and export
 const authReducer = (state = initState, action) => {
-  if (action.type == "SETLOGGEDIN") {
-    return { ...state, isLoggedIn: !state.isLoggedIn };
+  if (action.type == "SETLOGIN") {
+    return { ...state, isLoggedIn: true };
+  } else if (action.type == "SETLOGOUT") {
+    return { ...state, isLoggedIn: false };
   }
   return state;
 };

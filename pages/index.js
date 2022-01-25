@@ -1,7 +1,7 @@
 import Layout from "../components/layout";
 import Image from "next/image";
 import yeahBaby from "../public/yes-baby.gif";
-import Auth from "../components/auth";
+import Auth from "./auth/login";
 
 // with dispatch
 import { useSelector } from "react-redux";
