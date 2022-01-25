@@ -15,9 +15,6 @@ export default function EasysTable({ datas }) {
             <span data-tip data-for="title" id={row.isbn} value={row.title}>
               {row.title}
             </span>
-            <ReactTooltip id="title">
-              <span>제목을 누르면 그래프가 나타납니다.</span>
-            </ReactTooltip>
             <a
               target="_blank"
               href={row.url}
