@@ -90,8 +90,8 @@ export default function BookTable({ datas, clickTitleHandler }) {
       name: "태그",
       selector: "tags",
       sortable: "true",
-      maxWidth: "400px",
-      hide: "lg",
+      maxWidth: "500px",
+      hide: "md",
     },
   ];
 

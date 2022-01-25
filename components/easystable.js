@@ -35,7 +35,7 @@ export default function EasysTable({ datas }) {
       name: "저자",
       selector: "author",
       sortable: "true",
-      maxWidth: "150px",
+      maxWidth: "220px",
       hide: "md",
     },
     {

@@ -42,6 +42,11 @@ export default function Navbar() {
           👩‍🔬 이지스퍼블리싱 DB
         </button>
       </Link>
+      <Link href="/community/freeboard">
+        <button className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow">
+          ✍ 한두마디게시판
+        </button>
+      </Link>
       <button
         className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
         onClick={logoutHandler}

@@ -9,11 +9,7 @@ export default function DownloadToolBar({ datas, searchKeyword }) {
         <button className="text-sm bg-gray-300 h-fit py-1 px-4 hover:bg-gray-200 hover:shadow">
           <CSVLink
             data={datas}
-            filename={
-              "excel_data_" +
-              searchKeyword +
-              ".xls"
-            }
+            filename={"excel_data_" + searchKeyword + ".xls"}
             target="_blank"
           >
             <FontAwesomeIcon icon={faFileExcel} className="mr-2" />
@@ -21,10 +17,7 @@ export default function DownloadToolBar({ datas, searchKeyword }) {
           </CSVLink>
         </button>
       ) : (
-        <button className="rounded-lg bg-gray-300 h-fit py-1 px-4 disabled:opacity-50">
-          <FontAwesomeIcon icon={faFileExcel} className="mr-2" />
-          엑셀 다운로드
-        </button>
+        <></>
       )}
     </>
   );

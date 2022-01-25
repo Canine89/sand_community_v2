@@ -5,6 +5,7 @@ import { setLoginAction } from "../../reducers/auth.js";
 
 export default function Login() {
   const loginDispatch = useDispatch();
+  const setUserDispatch = useDispatch();
 
   const onSocialClickHandler = async (e) => {
     const provider = new GoogleAuthProvider();

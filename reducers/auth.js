@@ -1,11 +1,15 @@
 // set action
 export const SETLOGIN = "SETLOGIN";
 export const SETLOGOUT = "SETLOGOUT";
+export const SETUSER = "SETUSER";
 export function setLoginAction() {
   return { type: SETLOGIN };
 }
 export function setLogoutAction() {
   return { type: SETLOGOUT };
+}
+export function setUserDispatch() {
+  return { type: SETUSER };
 }
 
 // set init state
