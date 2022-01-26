@@ -29,6 +29,7 @@ function BookStat() {
       .then((res) => res.json())
       .then((json) => {
         setDateList(json);
+        setDate(json[0]);
       });
   }, []);
 
