@@ -17,17 +17,26 @@ const MyApp = ({ Component, pageProps }) => {
 
   // member 관리
   const easyspub_member = /\w+@easyspub.co.kr/gi;
-  const out_members = ["xcode.ko@gmail.com", "pyk707@hanbit.co.kr", "minhyeok@hanbit.co.kr"];
+  const out_members = [
+    "xcode.ko@gmail.com",
+    "pyk707@hanbit.co.kr",
+    "minhyeok@hanbit.co.kr",
+  ];
 
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        if (user.email.match(easyspub_member) || out_members.indexOf(user.email)) {
+        console.log(user);
+        if (
+          user.email.match(easyspub_member) ||
+          out_members.indexOf(user.email)
+        ) {
           loginDispatch(
             setLoginAction({
               payload: {
                 email: user.email,
                 displayName: user.displayName,
+                uid: user.uid,
               },
             })
           );

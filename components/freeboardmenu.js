@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { addDoc, collection } from "firebase/firestore";
-import { authService, dbService } from "../pages/auth/fbase";
-import { GoogleAuthProvider } from "firebase/auth";
+import { dbService } from "../pages/auth/fbase";
+import { useSelector } from "react-redux";
 
 const FreeBoardMenu = () => {
   const [msg, setMsg] = useState();
+  const userinfo = useSelector((state) => state.authReducer.payload);
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -17,10 +18,12 @@ const FreeBoardMenu = () => {
     e.preventDefault();
     await addDoc(collection(dbService, "msgs"), {
       msg: msg,
-      //   writer: data.user.displayName,
+      writer: userinfo.uid,
       createdAt: Date.now(),
     });
+    setMsg("");
   };
+
   return (
     <form onSubmit={submitHandler}>
       <input
