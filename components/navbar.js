@@ -49,6 +49,11 @@ export default function Navbar() {
           ✍ 한두마디게시판
         </button>
       </Link>
+      <a href="https://minhyeokl.github.io/team3d/">
+        <button className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow">
+          ✍ 목차뽑기(feat. 민혁님)
+        </button>
+      </a>
       <button
         className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow"
         onClick={logoutHandler}
