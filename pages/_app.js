@@ -29,7 +29,7 @@ const MyApp = ({ Component, pageProps }) => {
         console.log(user);
         if (
           user.email.match(easyspub_member) ||
-          out_members.indexOf(user.email)
+          out_members.indexOf(user.email) >= 0
         ) {
           loginDispatch(
             setLoginAction({
