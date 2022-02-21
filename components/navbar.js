@@ -31,7 +31,12 @@ export default function Navbar() {
       </Link>
       <Link href="/stat/bookstat">
         <button className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow">
-          📙 책
+          📙 두잇책
+        </button>
+      </Link>
+      <Link href="/stat/edubookstat">
+        <button className="rounded-lg bg-amber-300 h-fit py-1 px-4 hover:bg-amber-200 hover:shadow">
+          📘 에듀책
         </button>
       </Link>
       <Link href="/stat/infolabstat">
