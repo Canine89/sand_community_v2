@@ -88,8 +88,7 @@ function EduBookStat() {
       datas.filter((data) => {
         return (
           data.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-          data.publisher.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-          data.tags.toLowerCase().includes(searchKeyword.toLowerCase())
+          data.publisher.toLowerCase().includes(searchKeyword.toLowerCase())
         );
       })
     );
