@@ -41,19 +41,20 @@ function EduBookStat() {
 
       fetch(
         _apiurlbase +
-          "/edu_book/date?" +
-          "year=" +
-          _year +
-          "&month=" +
-          _month +
-          "&day=" +
-          _day
+        "/edu_book/date?" +
+        "year=" +
+        _year +
+        "&month=" +
+        _month +
+        "&day=" +
+        _day
       )
         .then((res) => {
           return res.json();
         })
         .then((json) => {
           const datas = json.map((data) => {
+            console.log(data)
             return {
               title: data.book.title,
               author: data.book.author,
@@ -62,12 +63,9 @@ function EduBookStat() {
               publisher: data.book.publisher,
               publish_date: data.book.publish_date,
               right_price: data.book.right_price,
-              tags:
-                data.book.tags.length > 0
-                  ? data.book.tags.reduce((acc, curr) => {
-                      return acc + ", " + curr;
-                    })
-                  : ["태그없음"],
+              tags: data.book.tags.reduce((acc, curr) => {
+                return acc + ", " + curr;
+              }),
               url: data.book.url,
               rank: data.rank,
               sales_point: data.sales_point,
