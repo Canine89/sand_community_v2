@@ -1,4 +1,4 @@
-import BookTable from "../../components/booktable";
+import EduBookTable from "../../components/edubooktable";
 import BookList from "../../components/datelist";
 import Layout from "../../components/layout";
 import { useState, useEffect } from "react";
@@ -41,21 +41,21 @@ function EduBookStat() {
 
       fetch(
         _apiurlbase +
-        "/edu_book/date?" +
-        "year=" +
-        _year +
-        "&month=" +
-        _month +
-        "&day=" +
-        _day
+          "/edu_book/date?" +
+          "year=" +
+          _year +
+          "&month=" +
+          _month +
+          "&day=" +
+          _day
       )
         .then((res) => {
           return res.json();
         })
         .then((json) => {
           const datas = json.map((data) => {
-            console.log(data)
             return {
+              category: data.book.category,
               title: data.book.title,
               author: data.book.author,
               isbn: data.book.isbn,
@@ -86,7 +86,8 @@ function EduBookStat() {
       datas.filter((data) => {
         return (
           data.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-          data.publisher.toLowerCase().includes(searchKeyword.toLowerCase())
+          data.publisher.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+          data.category.toLowerCase().includes(searchKeyword.toLowerCase())
         );
       })
     );
@@ -125,7 +126,7 @@ function EduBookStat() {
             datas={renderingDatas}
             searchKeyword={searchKeyword}
           />
-          <BookTable
+          <EduBookTable
             datas={renderingDatas}
             clickTitleHandler={clickTitleHandler}
           />
