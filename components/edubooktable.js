@@ -96,7 +96,7 @@ export default function EduBookTable({ datas, clickTitleHandler }) {
       name: "태그",
       selector: "tags",
       sortable: "true",
-      maxWidth: "200px",
+      maxWidth: "300px",
       hide: "md",
     },
   ];
