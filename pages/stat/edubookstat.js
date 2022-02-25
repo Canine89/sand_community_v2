@@ -1,4 +1,5 @@
 import EduBookTable from "../../components/edubooktable";
+import EduCategory from "../../components/educategory";
 import BookList from "../../components/datelist";
 import Layout from "../../components/layout";
 import { useState, useEffect } from "react";
@@ -15,6 +16,7 @@ function EduBookStat() {
   const [datas, setDatas] = useState([]);
   const [renderingDatas, setRenderingDatas] = useState([]);
   const [searchKeyword, setSearchKeyword] = useState("");
+  const [category, setCategory] = useState("초등참고서");
   const [isbnData, setIsbnData] = useState([]);
   const [dateList, setDateList] = useState([]);
   const isLoggedIn = useSelector((state) => state.authReducer.isLoggedIn);
@@ -38,16 +40,19 @@ function EduBookStat() {
       const _year = parseInt(date.slice(0, 4));
       const _month = parseInt(date.slice(5, 7));
       const _day = parseInt(date.slice(7, 9));
+      const _category = category;
 
       fetch(
         _apiurlbase +
-        "/edu_book/date?" +
-        "year=" +
-        _year +
-        "&month=" +
-        _month +
-        "&day=" +
-        _day
+          "/edu_book/date?" +
+          "year=" +
+          _year +
+          "&month=" +
+          _month +
+          "&day=" +
+          _day +
+          "&category=" +
+          _category
       )
         .then((res) => {
           return res.json();
@@ -75,7 +80,7 @@ function EduBookStat() {
           setRenderingDatas(datas);
         });
     }
-  }, [date]);
+  }, [date, category]);
 
   function dateChangeHandler(e) {
     setDate(e.target.value);
@@ -106,6 +111,10 @@ function EduBookStat() {
       });
   }
 
+  function categoryHandler(e) {
+    setCategory(e.target.value);
+  }
+
   return (
     <>
       {dateList.length > 0 ? (
@@ -113,6 +122,8 @@ function EduBookStat() {
       ) : (
         <></>
       )}
+
+      <EduCategory categoryHandler={categoryHandler} />
 
       <Search
         searchKeyword={searchKeyword}
