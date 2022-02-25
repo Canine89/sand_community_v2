@@ -41,13 +41,13 @@ function EduBookStat() {
 
       fetch(
         _apiurlbase +
-          "/edu_book/date?" +
-          "year=" +
-          _year +
-          "&month=" +
-          _month +
-          "&day=" +
-          _day
+        "/edu_book/date?" +
+        "year=" +
+        _year +
+        "&month=" +
+        _month +
+        "&day=" +
+        _day
       )
         .then((res) => {
           return res.json();
@@ -86,7 +86,6 @@ function EduBookStat() {
       datas.filter((data) => {
         return (
           data.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-          data.publisher.toLowerCase().includes(searchKeyword.toLowerCase()) ||
           data.category.toLowerCase().includes(searchKeyword.toLowerCase())
         );
       })
