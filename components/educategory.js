@@ -2,7 +2,7 @@ export default function EduCategory({ categoryHandler }) {
   return (
     <select name="edu_category" id="edu_category" onChange={categoryHandler}>
       <option value="초등참고서">초등참고서</option>
-      <option value="미취학아동/국어/한글">미취학아동</option>
+      <option value="미취학아동/국어/한글">미취학아동/국어/한글</option>
       <option value="미취학아동/수학">미취학아동/수학</option>
       <option value="미취학아동/영어">미취학아동/영어</option>
       <option value="미취학아동/기타">미취학아동/기타</option>
