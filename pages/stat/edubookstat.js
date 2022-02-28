@@ -44,15 +44,15 @@ function EduBookStat() {
 
       fetch(
         _apiurlbase +
-        "/edu_book/date?" +
-        "year=" +
-        _year +
-        "&month=" +
-        _month +
-        "&day=" +
-        _day +
-        "&category=" +
-        _category
+          "/edu_book/date?" +
+          "year=" +
+          _year +
+          "&month=" +
+          _month +
+          "&day=" +
+          _day +
+          "&category=" +
+          _category
       )
         .then((res) => {
           return res.json();
@@ -102,7 +102,12 @@ function EduBookStat() {
   }
 
   function clickTitleHandler(e) {
-    fetch("http://175.211.105.9:8000/edu_book/isbn/?id=" + e.target.id + "&category=" + category)
+    fetch(
+      "http://175.211.105.9:8000/edu_book/isbn/?id=" +
+        e.target.id +
+        "&category=" +
+        category
+    )
       .then((response) => {
         return response.json();
       })

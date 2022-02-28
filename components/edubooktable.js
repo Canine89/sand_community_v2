@@ -10,7 +10,7 @@ export default function EduBookTable({ datas, clickTitleHandler }) {
       name: "카테고리",
       selector: "category",
       sortable: "true",
-      maxWidth: "180px",
+      maxWidth: "250px",
     },
     {
       name: "순위",
@@ -96,8 +96,8 @@ export default function EduBookTable({ datas, clickTitleHandler }) {
       name: "태그",
       selector: "tags",
       sortable: "true",
-      maxWidth: "300px",
-      hide: "md",
+      maxWidth: "500px",
+      hide: "lg",
     },
   ];
 
