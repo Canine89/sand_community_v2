@@ -147,7 +147,7 @@ function EduBookStat() {
           />
         </>
       ) : (
-        <Loading msgs="날짜를 선택하세요" />
+        <Loading msgs="로딩하는 중이에요" />
       )}
       {isbnData.length > 0 ? (
         <div className="flex">
